@@ -20,8 +20,36 @@
         </div>
     </main>
 </body>
-<script>    
+<script>
+
 let counter = 0;
+const value = document.querySelector("#value");
+const buttons = document.querySelectorAll(".btn");
+buttons.forEach(function(button) {
+    button.addEventListener("click", function(event) {
+        const cls_list = event.currentTarget.classList;
+        if (cls_list.contains("decrease")) {
+            counter--;
+        }
+        else if (cls_list.contains("reset")) {
+            counter = 0;
+        }
+        else if (cls_list.contains("increase")) {
+            counter++;
+        }
+        if (counter > 0) {
+            value.style.color = "green";
+        }
+        else if (counter < 0) {
+            value.style.color = "red";
+        }
+        else {
+            value.style.color = "black";
+        }
+        
+        value.textContent = counter;
+    });
+});
 
 </script>
 </html>
